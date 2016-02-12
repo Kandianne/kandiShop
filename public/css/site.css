@@ -1,0 +1,16 @@
+li {
+	list-style: none;
+	padding: 3em;
+}
+
+h3 {
+	color: green;
+}
+
+.md-toast-content {
+	background-color: red;
+}
+
+md-input-container label {
+	color: black;
+}

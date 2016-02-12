@@ -1,0 +1,18 @@
+<div  ng-controller="GlobalController as vm" layout layout-align="center">
+    <form ng-submit="vm.submitCandy()" ng-cloak flex="60" class="md-whiteframe-7dp" layout-padding>
+		<h1 layout layout-align="center">Add New Products to the Kandi Shop</h1>
+		<md-input-container layout layout-align="center">
+    		<label>
+    			Name of Candy
+    		</label>
+    		<input ng-model="vm.candy.candyName" type="text" required>
+    	</md-input-container>
+    	<md-input-container layout layout-align="center">
+    		<input ng-model="vm.candy.unitPrice" type="number" placeholder="Price in $ (Dollars)" required>
+    	</md-input-container>
+    	<md-input-container layout layout-align="center">
+    		<input ng-model="vm.candy.stock" type="number" placeholder="Quantity of Stock" required>
+    	</md-input-container>
+		<input type="submit" class="md-button md-raised" layout flex layout-align="center">
+	</form>
+</div>    

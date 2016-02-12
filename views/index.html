@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>kandi-shop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.3/angular-material.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+</head>
+<body>
+
+	<md-toolbar>
+		<h2 layout layout-align="center">Welcome to the Kandi Shop</h2>
+		<h4 layout layout-align="center">What would you like to do?</h4>
+		<div layout layout-align="center">
+			<md-button ui-sref="AddCandy" class="md-button md-raised">Add Candy to Inventory</md-button>
+			<md-button ui-sref="InventoryList" class="md-button md-raised">View Candy Inventory</md-button>
+			<md-button ui-sref="ShoppingBasket" class="md-button md-raised">View Shopping Cart</md-button>
+		</div>
+	</md-toolbar>
+
+<ui-view></ui-view>
+
+
+	<!-- External Libs -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-aria.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.3/angular-material.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-animate.min.js"></script>
+
+	<!-- Global Sources -->
+	<script src="/javascript/app.js"></script>
+
+	<!-- Factories -->
+	<script src="/javascript/services/GlobalFactory.js"></script>
+
+	<!-- Controllers -->
+	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/ShoppingBasketController.js"></script>
+
+</body>
+</html>

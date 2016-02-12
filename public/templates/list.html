@@ -1,0 +1,24 @@
+<div  ng-controller="GlobalController as vm">
+	<h1 layout layout-align="center">List of Candies (Inventory)</h1>
+	<ul layout>
+		<li id="inventoryItem" ng-repeat="c in vm.candies" class="md-whiteframe-7dp" layout-wrap>
+			<h3 layout layout-align="center">
+				{{c.candyName}}&nbsp;${{c.unitPrice}}
+			</h3>
+			<span layout layout-align="center">
+				({{c.stock}} now in stock)
+			</span>
+			<div layout  ng-show="c.stock > 0">
+				<md-input-container>
+	    			<input id="amountDesired" ng-model="amountDesired" ng-click="vm.checkAvailability(amountDesired, c.stock)" type="number" placeholder="Desired Amount?" required>
+	    		</md-input-container>
+			</div>
+			<div layout ng-show="c.stock > 0">
+		    	Add to Shopping Basket?&nbsp;<md-checkbox ng-click="vm.addToBasket(amountDesired, c._id)" aria-label="Checkbox"></md-checkbox>
+			</div>
+			<div layout ng-show="c.stock == 0">
+					OUT OF STOCK
+			</div>
+		</li>
+	</ul>
+</div>

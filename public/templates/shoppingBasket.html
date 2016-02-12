@@ -1,0 +1,16 @@
+<div ng-controller="ShoppingBasketController as vm">
+	<h1 layout layout-align="center">Your Shopping Basket</h1>
+	<ul flex layout layout-align="center">
+		<li ng-repeat="s in vm.candiesInBasket track by $index" class="md-whiteframe-7dp" layout-align="column">
+			<h3 layout layout-align="center">
+				{{s.candyName}}&nbsp;${{s.unitPrice}}
+			</h3>
+			<span layout layout-align="center">
+				Amount in Shopping Cart: {{s.amountDesired}}
+			</span>
+	    	<md-button layout class="md-button md-raised" ng-click="vm.deleteFromBasket($index, s._id, s.amountDesired)">Delete From Basket</md-button>
+	    	<md-button layout class="md-button md-raised" ng-click="vm.purchase()">Purchase Items</md-button>
+		</li>
+	</ul>
+</div>
+
