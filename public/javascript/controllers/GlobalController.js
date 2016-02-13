@@ -34,13 +34,14 @@
 
 		//===================ADDING CANDIES TO BASKET===============================================	
 		vm.addToBasket = function(amountDesired, idOfCandy) {
-			if(amountDesired == undefined) { //checking if amount chosen is 0 and if so notify
+			if(amountDesired == undefined || amountDesired === 0) { //checking if amount chosen is 0 and if so notify
 				$mdToast.show(//showing notification to add amount before adding to basket
 					$mdToast.simple()
 					.content('Please add a desired amount before adding to Basket')
 					.position(vm.getToastPosition())
 					.hideDelay(5000)
 				);
+				return;
 			}
 			GlobalFactory.addToBasket(amountDesired, idOfCandy).then(function(res) {
 				$mdToast.show( //notifying user that item has been added to basket
