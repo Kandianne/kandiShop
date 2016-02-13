@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 
+//=================MONGOOSE MODEL OF HOW I WANT MY OBJECT TO BE CONSTRUCTED====================
 var CandySchema = new mongoose.Schema({
 	candyName: String,
 	unitPrice: Number, 

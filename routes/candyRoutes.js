@@ -6,8 +6,7 @@ var Candy = mongoose.model('Candy');
 
 //=============================CREATING CANDY INVENTORY LIST===============================
 router.post('/', function(req, res) {
-	console.log(req.body, "9 routes");
-	var newCandy = new Candy(req.body);
+	var newCandy = new Candy(req.body);//creating a new candy object based on mongoose schema which I required at top of this page
 	newCandy.save(function(err, result) {
 		if(err) return res.status(500).send({err:'The server is having issues.'});
 		if(!result) return res.status(400).send({err: 'Sorry, I could not create the candy product'});
@@ -17,7 +16,7 @@ router.post('/', function(req, res) {
 
 //==============================GETTING CANDIES IN INVENTORY===============================
 router.get('/', function(req, res) {
-	Candy.find({})
+	Candy.find({})//finding all the candies in the database
 	.exec(function(err, candies) {
 		if(err) return res.status(500).send({err:'The server is having issues.'});
 		if(!candies) return res.status(400).send({err: 'Sorry, I could not get the candies'});
@@ -27,7 +26,7 @@ router.get('/', function(req, res) {
 
 //==============================GETTING CANDIES IN BASKET===============================
 router.get('/shoppingBasket', function(req, res) {
-	Candy.find({addedToShoppingList: true})
+	Candy.find({addedToShoppingList: true})//finding only the candies that are marked to be added to shopping list
 	.exec(function(err, shoppingBasket) {
 		if(err) return res.status(500).send({err:'The server is having issues.'});
 		if(!shoppingBasket) return res.status(400).send({err: 'Sorry, I could not get the candies'});
@@ -37,7 +36,7 @@ router.get('/shoppingBasket', function(req, res) {
 
 //====================UPDATING CANDIES TO DISPLAY IN SHOPPING LIST=========================
 router.post('/addToBasket', function(req, res) {
-	var qtyRequested = req.body.amountDesired;
+	var qtyRequested = req.body.amountDesired;////running function that changes stock amount, changes desired amount of candies, and adds to shopping basket
 	Candy.findByIdAndUpdate({_id:req.body.idOfCandy}, { $set: { addedToShoppingList: true}, $inc: {stock: -qtyRequested, amountDesired: qtyRequested} }, function(err, result) {
 		if(err) return res.status(500).send({err:'The server is having issues.'});
 		if(!result) return res.status(400).send({err: 'Sorry, I could not find that candy'});
@@ -46,7 +45,7 @@ router.post('/addToBasket', function(req, res) {
 });
 
 //====================UPDATING CANDIES TO DELETE FROM SHOPPING LIST=========================
-router.post('/deleteFromBasket', function(req, res) {
+router.post('/deleteFromBasket', function(req, res) { //running function that changes stock amount,changes desired amount of candies, and takes off of shopping list
 	Candy.findByIdAndUpdate({_id:req.body.id}, { $set: { addedToShoppingList: false}, $inc: {stock: +req.body.amt, amountDesired: -req.body.amt} }, function(err, result) {
 		if(err) return res.status(500).send({err:'The server is having issues.'});
 		if(!result) return res.status(400).send({err: 'Sorry, I could not find that candy'});

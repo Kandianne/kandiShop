@@ -70,7 +70,7 @@
 			left: false,
 			right: true
 		};
-		vm.getToastPosition = function () {
+		vm.getToastPosition = function () {// functionality to know where to position toast
 			return Object.keys(vm.toastPosition)
 			.filter(function (pos) {
 				return vm.toastPosition[pos];
